@@ -1,0 +1,15 @@
+{
+  "name": "webhookie",
+  "version": "1.0.0",
+  "description": "A node server to manage your web hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}

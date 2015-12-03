@@ -49,6 +49,7 @@ var work = [
 ];
 
 router.post('/', function(req, res) {
+    console.log("request body: " + JSON.stringify(req.body, null, '\t')); 
     _(work).map(function(job){
       _(job.commands).map(function(cmd){
         myExec(cmd, job.dir);

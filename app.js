@@ -17,8 +17,10 @@ var router = express.Router();
 
 function myExec(cmd, dir){
   exec(cmd, { cwd: dir}, function (error, stdout, stderr) {
-    sys.print('stdout: ' + stdout);
-    sys.print('stderr: ' + stderr);
+    console.log('cmd: ' + cmd);
+    console.log('dir: ' + dir);
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
     if (error !== null) {
       console.log('exec error: ' + error);
     }

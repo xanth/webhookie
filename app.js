@@ -47,8 +47,8 @@ var work = [
 ];
 
 router.post('/', function(req, res) {
-    _(work).map((job) => {
-      _(job.commands).map((cmd) => {
+    _(work).map(function(job){
+      _(job.commands).map(function(cmd){
         myExec(cmd, job.dir);
       }).value();
     }).value();

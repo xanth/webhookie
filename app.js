@@ -35,21 +35,21 @@ var commands = [
 
 var work = [
   {
-    dir: "/home/rhys/2509ict-software-engineering-master/",
+    dir: "/home/rhys/2509ict-software-engineering/master/",
     commands: commands
   },
   {
-    dir: "/home/rhys/2509ict-software-engineering-rw-dev/",
+    dir: "/home/rhys/2509ict-software-engineering/rw-dev/",
     commands: commands
   },
   {
-    dir: "/home/rhys/2509ict-software-engineering-nj-dev/",
+    dir: "/home/rhys/2509ict-software-engineering/nj-dev/",
     commands: commands
   }
 ];
 
 router.post('/', function(req, res) {
-    console.log("request body: " + JSON.stringify(req.body, null, '\t')); 
+    console.log("request body: " + JSON.stringify(req.body, null, '\t'));
     _(work).map(function(job){
       _(job.commands).map(function(cmd){
         myExec(cmd, job.dir);

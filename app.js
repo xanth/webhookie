@@ -1,7 +1,8 @@
 var express    = require('express');
 var app        = express();
 var bodyParser = require('body-parser');
-var _ = require('lodash');
+var _          = require('lodash');
+var async      = require('async');
 
 var sys = require('sys')
 var exec = require('child_process').exec;
@@ -15,7 +16,7 @@ var port = process.env.PORT || 5000;
 
 var router = express.Router();
 
-function myExec(cmd, dir){
+function myExec(cmd, dir, cb){
   exec(cmd, { cwd: dir}, function (error, stdout, stderr) {
     console.log('cmd: ' + cmd);
     console.log('dir: ' + dir);
@@ -24,13 +25,13 @@ function myExec(cmd, dir){
     if (error !== null) {
       console.log('exec error: ' + error);
     }
+    cb();
   });
 };
 
 var commands = [
   "git pull",
-  "npm install --all",
-  "webpack"
+  "npm run-script buildDev"
 ]
 
 var work = [
@@ -50,11 +51,11 @@ var work = [
 
 router.post('/', function(req, res) {
     console.log("request body: " + JSON.stringify(req.body, null, '\t'));
-    _(work).map(function(job){
-      _(job.commands).map(function(cmd){
-        myExec(cmd, job.dir);
-      }).value();
-    }).value();
+    async.each(work, function(job, cb){
+        async.eachSeries(job.commands, function(job, cb){
+            myExec(cmd, job.dir, cb);
+        }, cb);
+    });
     res.json({ });
 });
 

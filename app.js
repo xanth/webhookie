@@ -52,7 +52,7 @@ var work = [
 router.post('/', function(req, res) {
     console.log("request body: " + JSON.stringify(req.body, null, '\t'));
     async.each(work, function(job, cb){
-        async.eachSeries(job.commands, function(job, cb){
+        async.eachSeries(job.commands, function(cmd, cb){
             myExec(cmd, job.dir, cb);
         }, cb);
     });

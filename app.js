@@ -41,7 +41,7 @@ var work = [
   },
   {
     dir: "/home/rhys/2509ict-software-engineering/rw-dev/",
-    commands: commands
+    commands: ["git pull", "npm run-script buildProd"]
   },
   {
     dir: "/home/rhys/2509ict-software-engineering/nj-dev/",

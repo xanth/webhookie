@@ -55,7 +55,6 @@ function doWork(){
             myExec(cmd, job.dir, cb);
         }, cb);
     });
-    res.json({ });
 }
 
 doWork();
@@ -63,6 +62,7 @@ doWork();
 router.post('/', function(req, res) {
     console.log("request body: " + JSON.stringify(req.body, null, '\t'));
     doWork();
+    res.json({ });
 });
 
 app.use('/', router);

@@ -49,14 +49,20 @@ var work = [
   }
 ];
 
-router.post('/', function(req, res) {
-    console.log("request body: " + JSON.stringify(req.body, null, '\t'));
+function doWork(){
     async.each(work, function(job, cb){
         async.eachSeries(job.commands, function(cmd, cb){
             myExec(cmd, job.dir, cb);
         }, cb);
     });
     res.json({ });
+}
+
+doWork();
+
+router.post('/', function(req, res) {
+    console.log("request body: " + JSON.stringify(req.body, null, '\t'));
+    doWork();
 });
 
 app.use('/', router);

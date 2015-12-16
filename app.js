@@ -37,11 +37,11 @@ var commands = [
 var work = [
   {
     dir: "/home/rhys/2509ict-software-engineering/master/",
-    commands: commands
+    commands: ["git pull", "npm run-script buildProd"]
   },
   {
     dir: "/home/rhys/2509ict-software-engineering/rw-dev/",
-    commands: ["git pull", "npm run-script buildProd"]
+    commands: commands
   },
   {
     dir: "/home/rhys/2509ict-software-engineering/nj-dev/",
